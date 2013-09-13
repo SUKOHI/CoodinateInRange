@@ -64,7 +64,7 @@ public class CoodinateInRange {
 				);
 				
 				if(RectFCorner.contains(checkPoint.x, checkPoint.y) 
-						&& !inRangeOval(RectFOval, cornerWidth, cornerHeight)) {
+						&& !inRangeOval(RectFOval)) {
 					
 					return false;
 					
@@ -80,16 +80,16 @@ public class CoodinateInRange {
 		
 	}
 	
-	public boolean inRangeCircle(RectF rectF, float width) {
+	public boolean inRangeCircle(RectF rectF) {
 
-		return inRangeOval(rectF, width, width);
+		return inRangeOval(rectF);
 		
 	}
 	
-	public boolean inRangeOval(RectF rectF, float width, float height) {
+	public boolean inRangeOval(RectF rectF) {
 		
-		float horizontalRadius = width / 2;
-		float verticalRadius = height / 2;
+		float horizontalRadius = rectF.width() / 2;
+		float verticalRadius = rectF.height() / 2;
 		float checkX = checkPoint.x - rectF.centerX();
 		float checkY = checkPoint.y - rectF.centerY();
 		double result = Math.pow(checkX, 2) / Math.pow(horizontalRadius, 2) + Math.pow(checkY, 2) / Math.pow(verticalRadius, 2);
